@@ -1,0 +1,7 @@
+# Ignore everything
+**
+
+# Allowed
+!server/
+!requirements.txt
+!EDSR_x2.pb

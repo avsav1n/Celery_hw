@@ -1,0 +1,9 @@
+import os
+
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = os.getenv("REDIS_PORT", "6379")
+REDIS_BROKER_DB = os.getenv("REDIS_BROKER_DB", "0")
+REDIS_BACKEND_DB = os.getenv("REDIS_BACKEND_DB", "1")
+
+REDIS_BROKER = f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_BROKER_DB}"
+REDIS_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_BACKEND_DB}"

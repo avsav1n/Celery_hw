@@ -1,0 +1,30 @@
+@baseurl = http://localhost:5000
+@task_id = 5e81d206-a2e0-407e-941e-2fcebe93d047
+
+###
+POST {{baseurl}}/upscale
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image2"; filename="lama2.png"
+Content-Type: image/png
+
+< lama2.png
+
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW
+# Content-Disposition: form-data; name="image2"; filename="lama2.png"
+# Content-Type: image/png
+
+# < lama2.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+GET {{baseurl}}//tasks/{{task_id}}
+
+###
+GET {{baseurl}}//processed/{{task_id}}
+
+# celery -A server.tasks worker -P solo --loglevel=INFO
+
+###
+GET {{baseurl}}/healthcheck

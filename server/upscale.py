@@ -44,7 +44,7 @@ class Scaler:
         ext: str = "png",
         save_result: bool = True,
         save_result_path: str = "./results/",
-        model_path: str = "EDSR_x2.pb",
+        model_path: str = "./EDSR_x2.pb",
     ) -> bytes:
         cls._initial(model_path=model_path)
         image: MatLike = cls._bytes_to_matlike(img=image)

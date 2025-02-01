@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+      branches: ['main']
+
+jobs:
+  integration:
+    runs-on: ubuntu-22.04
+    services:
+      redis:
+        image: redis:alpine
+        options: 
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: check changes
+        uses: actions/checkout@v4
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with: 
+          python-version: '3.12'
+
+      - name: requirements setup
+        run: pip install -r requirements-dev.txt
+
+      - name: linting
+        run: flake8 --max-line-length=100 server/
+        
+      - name: testing
+        run: pytest

@@ -1,6 +1,5 @@
 from server.applications import celery
-from server.utils import ImageInfo
-from upscale.upscale import Scaler
+from server.upscale import Scaler
 
 
 @celery.task(bind=True)
